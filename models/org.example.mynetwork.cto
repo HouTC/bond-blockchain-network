@@ -18,25 +18,52 @@
 
 namespace org.example.mynetwork
 
+//sample participant
 participant SampleParticipant identified by participantId {
   o String participantId
   o String firstName
   o String lastName
 }
 
+participant issuer identified by issuerId {
+  o String issuerId
+  o String name
+  o String firstListed
+  o String domicile
+  o String registry
+  o String endofFinancialYear
+}
+
+//sample asset
 asset SampleAsset identified by assetId {
   o String assetId
   --> SampleParticipant owner
   o String value
 }
 
+asset bond identified by ISIN {
+  o String ISIN
+  --> issuer issuer
+  o String type
+  o String status
+  o String issueAmount
+  o String issueDate
+  o String interestRate
+  o String firstInterestPaymentDate
+  o String interestPaymentFreq
+  o String maturityDate
+}
+
+//sample transaction
 transaction SampleTransaction {
   --> SampleAsset asset
   o String newValue
 }
 
+//sample event
 event SampleEvent {
   --> SampleAsset asset
   o String oldValue
   o String newValue
 }
+ 
