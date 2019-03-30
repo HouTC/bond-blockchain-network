@@ -25,13 +25,23 @@ participant SampleParticipant identified by participantId {
   o String lastName
 }
 
-participant issuer identified by issuerId {
+participant Issuer identified by issuerId {
   o String issuerId
   o String name
   o String firstListed
   o String domicile
   o String registry
   o String endofFinancialYear
+  o String bankAccount
+  o String balance
+  o Boolean paymentStatus
+}
+
+participant Investor identified by investorId {
+  o String investorId
+  o String name
+  o String bankAccount
+  o Boolean receiveStatus
 }
 
 //sample asset
@@ -41,17 +51,29 @@ asset SampleAsset identified by assetId {
   o String value
 }
 
-asset bond identified by ISIN {
+asset Ｂond identified by ISIN {
   o String ISIN
-  --> issuer issuer
+  --> Issuer issuer
   o String type
   o String status
-  o String issueAmount
-  o String issueDate
-  o String interestRate
-  o String firstInterestPaymentDate
+  o Double issueAmount
+  o DateTime issueDate
+  o Double interestRate
+  o DateTime firstInterestPaymentDate
   o String interestPaymentFreq
-  o String maturityDate
+  o DateTime maturityDate
+  o DateTime nextPaymentDate
+  o Double minHolding
+  o Double issuePrice
+  o String[] holdingId
+}
+
+asset holding identified by holdingId {
+  o String holdingId
+  --> Investor owner
+  o Double faceValue
+  o Double size
+  o String ISIN
 }
 
 //sample transaction
