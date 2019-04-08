@@ -82,6 +82,13 @@ transaction SampleTransaction {
   o String newValue
 }
 
+//bulk payment process
+//Can participants be the attributes?
+transaction BulkPayment {
+  -->Issuer issuer
+  o String newBalance
+}
+
 //sample event
 event SampleEvent {
   --> SampleAsset asset
