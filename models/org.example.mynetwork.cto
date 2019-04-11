@@ -89,12 +89,8 @@ transaction SampleTransaction {
 
 //bulk payment process
 transaction BulkPayment {
-<<<<<<< HEAD
   --> Issuer issuer
-=======
-  -->Issuer issuer
-  -->Bond bond
->>>>>>> 0b86b5c8724ec41d61ab7c60535982b8b2a23923
+  --> Bond bond
   o Double coupon
 }
 
