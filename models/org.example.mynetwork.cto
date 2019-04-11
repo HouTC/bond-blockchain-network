@@ -55,18 +55,23 @@ asset SampleAsset identified by assetId {
 asset Bond identified by ISIN {
   o String ISIN
   --> Issuer issuer
-  o String type
-  o String status
+
+  //calculate bulk payment
   o Double issueAmount
-  o DateTime issueDate
   o Double interestRate
+
+  //decide the payment date
+  o DateTime issueDate
   o DateTime firstInterestPaymentDate
   o String interestPaymentFreq
   o DateTime maturityDate
   o DateTime nextPaymentDate
+
+  --> Holding[] holdings
   o Double minHolding
   o Double issuePrice
-  --> Holding[] holdings
+  o String type
+  o String status
 }
 
 asset Holding identified by holdingId {
@@ -84,10 +89,9 @@ transaction SampleTransaction {
 }
 
 //bulk payment process
-//Can participants be the attributes?
 transaction BulkPayment {
   -->Issuer issuer
-  o String newBalance
+  o Double coupon
 }
 
 //distribute coupon process
