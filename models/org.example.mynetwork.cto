@@ -71,7 +71,7 @@ asset Bond identified by ISIN {
   o Double minHolding
   o Double issuePrice
   o String type
-  o String status
+  o Boolean pStatus default = false
 }
 
 asset Holding identified by holdingId {
@@ -91,6 +91,7 @@ transaction SampleTransaction {
 //bulk payment process
 transaction BulkPayment {
   -->Issuer issuer
+  -->Bond bond
   o Double coupon
 }
 
