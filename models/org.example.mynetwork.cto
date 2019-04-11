@@ -79,7 +79,6 @@ asset Holding identified by holdingId {
   --> Investor owner
   --> Bond bond
   o Double faceValue
-  o Double couponAmount
 }
 
 //sample transaction
@@ -90,14 +89,13 @@ transaction SampleTransaction {
 
 //bulk payment process
 transaction BulkPayment {
-  -->Issuer issuer
+  --> Issuer issuer
   o Double coupon
 }
 
 //distribute coupon process
 transaction DistributeCoupon {
-  -->Investor investor
-  o String newBalance
+  --> Bond bond
 }
 
 //sample event
