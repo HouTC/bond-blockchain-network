@@ -33,7 +33,7 @@ participant Issuer identified by issuerId {
   o String registry
   o String endofFinancialYear
   o String bankAccount
-  o String balance
+  o Double balance
   o Boolean paymentStatus
 }
 
@@ -41,6 +41,7 @@ participant Investor identified by investorId {
   o String investorId
   o String name
   o String bankAccount
+  o Double balance
   o Boolean receiveStatus
 }
 
@@ -51,7 +52,7 @@ asset SampleAsset identified by assetId {
   o String value
 }
 
-asset Ｂond identified by ISIN {
+asset Bond identified by ISIN {
   o String ISIN
   --> Issuer issuer
   o String type
@@ -65,15 +66,15 @@ asset Ｂond identified by ISIN {
   o DateTime nextPaymentDate
   o Double minHolding
   o Double issuePrice
-  o String[] holdingId
+  --> Holding[] holdings
 }
 
-asset holding identified by holdingId {
+asset Holding identified by holdingId {
   o String holdingId
   --> Investor owner
+  --> Bond bond
   o Double faceValue
-  o Double size
-  o String ISIN
+  o Double couponAmount
 }
 
 //sample transaction
@@ -86,6 +87,12 @@ transaction SampleTransaction {
 //Can participants be the attributes?
 transaction BulkPayment {
   -->Issuer issuer
+  o String newBalance
+}
+
+//distribute coupon process
+transaction DistributeCoupon {
+  -->Investor investor
   o String newBalance
 }
 
