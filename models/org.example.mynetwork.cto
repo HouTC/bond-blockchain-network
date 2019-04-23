@@ -28,19 +28,19 @@ participant SampleParticipant identified by participantId {
 participant Issuer identified by issuerId {
   o String issuerId
   o String name
-  o String firstListed
-  o String domicile
-  o String registry
-  o String endofFinancialYear
-  o String bankAccount
+  //o String firstListed
+  //o String domicile
+  //o String registry
+  //o String endofFinancialYear
+  //o String bankAccount
   o Double balance
-  o Boolean paymentStatus
+  //o Boolean paymentStatus
 }
 
 participant Investor identified by investorId {
   o String investorId
   o String name
-  o String bankAccount
+  //o String bankAccount
   o Double balance
   o Boolean receiveStatus
 }
@@ -68,9 +68,9 @@ asset Bond identified by ISIN {
   o DateTime nextPaymentDate
 
   --> Holding[] holdings
-  o Double minHolding
-  o Double issuePrice
-  o String type
+  //o Double minHolding
+  //o Double issuePrice
+  //o String type
   o Boolean pStatus default = false
 }
 
