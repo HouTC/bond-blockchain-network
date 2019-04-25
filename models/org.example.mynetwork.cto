@@ -42,7 +42,7 @@ participant Investor identified by investorId {
   o String name
   //o String bankAccount
   o Double balance
-  o Boolean receiveStatus
+  //o Boolean receiveStatus
 }
 
 //sample asset
@@ -61,11 +61,11 @@ asset Bond identified by ISIN {
   o Double interestRate
 
   //decide the payment date
-  o DateTime issueDate
-  o DateTime firstInterestPaymentDate
-  o String interestPaymentFreq
-  o DateTime maturityDate
-  o DateTime nextPaymentDate
+  //o DateTime issueDate
+  //o DateTime firstInterestPaymentDate
+  //o String interestPaymentFreq
+  //o DateTime maturityDate
+  //o DateTime nextPaymentDate
 
   --> Holding[] holdings
   //o Double minHolding
