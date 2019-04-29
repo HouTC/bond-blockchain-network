@@ -45,6 +45,11 @@ participant Investor identified by investorId {
   //o Boolean receiveStatus
 }
 
+participant Regulator identified by regulatorID {
+  o String regulatorID
+  o String name
+}
+
 //sample asset
 asset SampleAsset identified by assetId {
   o String assetId
@@ -96,6 +101,11 @@ transaction BulkPayment {
 
 //distribute coupon process
 transaction DistributeCoupon {
+  --> Bond bond
+}
+
+//regulator can decline bond, if bond input is wrong
+transaction DeclineBond{
   --> Bond bond
 }
 
