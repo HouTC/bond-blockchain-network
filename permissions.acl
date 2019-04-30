@@ -15,6 +15,8 @@
 /**
  * Sample access control list.
  */
+
+ /*
 rule EverybodyCanReadEverything {
     description: "Allow all participants read access to all resources"
     participant: "org.example.mynetwork.SampleParticipant"
@@ -39,6 +41,7 @@ rule OwnerHasFullAccessToTheirAssets {
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
+*/
 
 rule SystemACL {
   description:  "System ACL to permit all access"
@@ -61,5 +64,132 @@ rule NetworkAdminSystem {
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
     resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule InvestorViewUpdateThemselvesOnly {
+  description: "Investor can view and update their own record only"
+  participant(i): "org.example.mynetwork.Investor"
+  operation: READ, UPDATE
+  resource(r): "org.example.mynetwork.Investor"
+  condition: (r.getIdentifier() == i.getIdentifier())
+  action: ALLOW
+}
+
+rule IssuerViewUpdateThemselvesOnly {
+  description: "Issuer can view and update their own record only"
+  participant(i): "org.example.mynetwork.Issuer"
+  operation: READ, UPDATE
+  resource(r): "org.example.mynetwork.Issuer"
+  condition: (r.getIdentifier() == i.getIdentifier())
+  action: ALLOW
+}
+
+rule RegulatorViewUpdateThemselves {
+  description: "Regulator can view and update their own record"
+  participant: "org.example.mynetwork.Regulator"
+  operation: READ, UPDATE
+  resource: "org.example.mynetwork.Regulator"
+  action: ALLOW
+}
+
+rule RegulatorAccessAllResources {
+    description: "Allow Regulator to access all resources"
+    participant: "org.example.mynetwork.Regulator"
+    operation: ALL
+    resource: "org.example.mynetwork.*"
+    action: ALLOW
+}
+
+rule InvestorAccessTheirHoldings {
+  description: "Investor has full access to their own Holdings"
+  participant(i): "org.example.mynetwork.Investor"
+  operation: ALL
+  resource(r): "org.example.mynetwork.Holding"
+  condition: (r.owner.getIdentifier() == i.getIdentifier())
+  action: ALLOW
+}
+
+rule IssuerAccessTheirBonds {
+  description: "Issuer has full access to the Bonds they have issued"
+  participant(i): "org.example.mynetwork.Issuer"
+  operation: ALL
+  resource(r): "org.example.mynetwork.Bond"
+  condition: (r.issuer.getIdentifier() == i.getIdentifier())
+  action: ALLOW
+}
+
+rule IssuerAccessHoldings {
+  description: "Issuer can access Holdings"
+  participant(i): "org.example.mynetwork.Issuer"
+  operation: ALL
+  resource(r): "org.example.mynetwork.Holding"
+  condition: (r.bond.issuer.getIdentifier() == i.getIdentifier())
+  action: ALLOW
+}
+
+rule EnableDeclineBondTxn {
+    description: "Enable Regulators to submit DeclineBond transactions"
+    participant: "org.example.mynetwork.Regulator"
+    operation: ALL
+    resource: "org.example.mynetwork.DeclineBond"
+    action: ALLOW
+}
+
+rule InvestorViewOwnHistoryOnly {
+  description: "Investor should be able to view the history of their own transactions only"
+  participant(i): "org.example.mynetwork.Investor"
+  operation: READ
+  resource(r): "org.hyperledger.composer.system.HistorianRecord"
+  condition: (r.participantInvoking.getIdentifier() != i.getIdentifier())
+  action: DENY
+}
+
+rule IssuerViewOwnHistoryOnly {
+  description: "Issuer should be able to view the history of their own transactions only"
+  participant(i): "org.example.mynetwork.Issuer"
+  operation: READ
+  resource(r): "org.hyperledger.composer.system.HistorianRecord"
+  condition: (r.participantInvoking.getIdentifier() != i.getIdentifier())
+  action: DENY
+}
+
+rule RegulatorViewTransactionHistory {
+  description: "Regulator should be able to view the history of all transactions"
+  participant: "org.example.mynetwork.Regulator"
+  operation: READ
+  resource: "org.hyperledger.composer.system.HistorianRecord"
+  action: ALLOW
+}
+/*
+rule RegulatorAccessBulkPayment {
+    description: "Grant Regulator full access to BulkPayment Transactions"
+    participant: "org.example.mynetwork.Regulator"
+    operation: ALL
+    resource: "org.example.mynetwork.BulkPayment"
+    action: ALLOW
+}
+
+rule RegulatorAccessDistributeCoupon {
+    description: "Grant Regulator full access to DistributeCoupon Transactions"
+    participant: "org.example.mynetwork.Regulator"
+    operation: ALL
+    resource: "org.example.mynetwork.DistributeCoupon"
+    action: ALLOW
+}
+*/
+rule EnableBulkPaymentTxn {
+    description: "Enable Issuer to submit BulkPayment transactions"
+    participant: "org.example.mynetwork.Issuer"
+    operation: ALL
+    resource: "org.example.mynetwork.BulkPayment"
+    action: ALLOW
+}
+
+rule EnableDistributeCouponTxn {
+    description: "Enable Issuer to submit DistributeCoupon transactions"
+    participant: "org.example.mynetwork.Issuer"
+    operation: ALL
+    resource: "org.example.mynetwork.DistributeCoupon"
     action: ALLOW
 }
