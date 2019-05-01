@@ -92,6 +92,14 @@ transaction SampleTransaction {
   o String newValue
 }
 
+//coupon payment process
+transaction CouponPayment {
+  --> Issuer issuer
+  --> Bond bond
+  o Double coupon
+}
+
+
 //bulk payment process
 transaction BulkPayment {
   --> Issuer issuer
