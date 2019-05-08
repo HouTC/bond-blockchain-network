@@ -134,4 +134,19 @@ event CouponDistributedEvent {
   o String bondISIN
 }
 
+//payment made event
+event PaymentMadeEvent {
+  --> Issuer issuer
+}
+
+//payment distributed event
+event PaymentDistributedEvent {
+  --> Investor investor
+}
+
+//payment incorrect amount event
+event PaymentIncorrectEvent {
+  --> Issuer issuer
+}
+
 //creating new dev branch

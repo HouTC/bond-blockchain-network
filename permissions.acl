@@ -68,27 +68,27 @@ rule NetworkAdminSystem {
 }
 
 rule InvestorViewUpdateThemselvesOnly {
-  description: "Investor can view and update their own record only"
+  description: "Investor can view their own record only"
   participant(i): "org.example.mynetwork.Investor"
-  operation: READ, UPDATE
+  operation: READ
   resource(r): "org.example.mynetwork.Investor"
   condition: (r.getIdentifier() == i.getIdentifier())
   action: ALLOW
 }
 
 rule IssuerViewUpdateThemselvesOnly {
-  description: "Issuer can view and update their own record only"
+  description: "Issuer can view their own record only"
   participant(i): "org.example.mynetwork.Issuer"
-  operation: READ, UPDATE
+  operation: READ
   resource(r): "org.example.mynetwork.Issuer"
   condition: (r.getIdentifier() == i.getIdentifier())
   action: ALLOW
 }
 
 rule RegulatorViewUpdateThemselves {
-  description: "Regulator can view and update their own record"
+  description: "Regulator has full access to their own record"
   participant: "org.example.mynetwork.Regulator"
-  operation: READ, UPDATE
+  operation: ALL
   resource: "org.example.mynetwork.Regulator"
   action: ALLOW
 }
@@ -136,6 +136,14 @@ rule EnableDeclineBondTxn {
     action: ALLOW
 }
 
+rule EnableCouponPaymentTxn {
+    description: "Enable Issuers to submit CouponPayment transactions"
+    participant: "org.example.mynetwork.Issuer"
+    operation: ALL
+    resource: "org.example.mynetwork.CouponPayment"
+    action: ALLOW
+}
+
 rule InvestorViewOwnHistoryOnly {
   description: "Investor should be able to view the history of their own transactions only"
   participant(i): "org.example.mynetwork.Investor"
@@ -177,7 +185,7 @@ rule RegulatorAccessDistributeCoupon {
     resource: "org.example.mynetwork.DistributeCoupon"
     action: ALLOW
 }
-*/
+
 rule EnableBulkPaymentTxn {
     description: "Enable Issuer to submit BulkPayment transactions"
     participant: "org.example.mynetwork.Issuer"
@@ -192,4 +200,4 @@ rule EnableDistributeCouponTxn {
     operation: ALL
     resource: "org.example.mynetwork.DistributeCoupon"
     action: ALLOW
-}
+}*/
