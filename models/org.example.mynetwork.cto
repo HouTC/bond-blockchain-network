@@ -96,7 +96,6 @@ transaction SampleTransaction {
 transaction CouponPayment {
   --> Issuer issuer
   --> Bond bond
-  o Double coupon
 }
 
 
