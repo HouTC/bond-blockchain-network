@@ -18,12 +18,6 @@
 
 namespace org.example.mynetwork
 
-//sample participant
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
-}
 
 participant Issuer identified by issuerId {
   o String issuerId
@@ -50,12 +44,7 @@ participant Regulator identified by regulatorID {
   o String name
 }
 
-//sample asset
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
-}
+
 
 asset Bond identified by ISIN {
   o String ISIN
@@ -66,31 +55,27 @@ asset Bond identified by ISIN {
   o Double interestRate
 
   //decide the payment date
-  //o DateTime issueDate
+  o String issueDate
   //o DateTime firstInterestPaymentDate
-  //o String interestPaymentFreq
-  //o DateTime maturityDate
+  o String interestPaymentFreq
+  o String maturityDate
   //o DateTime nextPaymentDate
 
   --> Holding[] holdings
-  //o Double minHolding
+  o Double minHolding
   //o Double issuePrice
-  //o String type
+  o String type
   o Boolean pStatus default = false
 }
 
 asset Holding identified by holdingId {
   o String holdingId
   --> Investor owner
-  --> Bond bond
+  o String bond
   o Double faceValue
 }
 
-//sample transaction
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
-}
+
 
 //coupon payment process
 transaction CouponPayment {
@@ -98,29 +83,9 @@ transaction CouponPayment {
   --> Bond bond
 }
 
-
-//bulk payment process
-transaction BulkPayment {
-  --> Issuer issuer
-  --> Bond bond
-  o Double coupon
-}
-
-//distribute coupon process
-transaction DistributeCoupon {
-  --> Bond bond
-}
-
 //regulator can decline bond, if bond input is wrong
 transaction DeclineBond{
   --> Bond bond
-}
-
-//sample event
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
 }
 
 //bulk payment event
@@ -146,6 +111,10 @@ event PaymentDistributedEvent {
 //payment incorrect amount event
 event PaymentIncorrectEvent {
   --> Issuer issuer
+}
+
+// TRANSACTIONS FOR SETUP
+transaction SetupDemo {
 }
 
 //creating new dev branch
