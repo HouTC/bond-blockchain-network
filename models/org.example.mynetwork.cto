@@ -55,11 +55,11 @@ asset Bond identified by ISIN {
   o Double interestRate
 
   //decide the payment date
-  o String issueDate
+  o DateTime issueDate
   //o DateTime firstInterestPaymentDate
   o String interestPaymentFreq
-  o String maturityDate
-  //o DateTime nextPaymentDate
+  o DateTime maturityDate
+  o DateTime nextPaymentDate
 
   --> Holding[] holdings
   o Double minHolding
