@@ -59,13 +59,14 @@ asset Bond identified by ISIN {
   //o DateTime firstInterestPaymentDate
   o String interestPaymentFreq
   o DateTime maturityDate
-  o DateTime nextPaymentDate
-
+  
   --> Holding[] holdings
   o Double minHolding
   //o Double issuePrice
   o String type
-  o Boolean pStatus default = false
+  o DateTime nextPaymentDate
+  o Boolean matured default = false
+  // o Boolean pStatus default = false
 }
 
 asset Holding identified by holdingId {
