@@ -80,7 +80,6 @@ asset Holding identified by holdingId {
 
 //coupon payment process
 transaction CouponPayment {
-  --> Issuer issuer
   --> Bond bond
 }
 
