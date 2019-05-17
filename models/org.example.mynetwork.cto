@@ -22,7 +22,7 @@ namespace org.example.mynetwork
 participant Issuer identified by issuerId {
   o String issuerId
   o String name
-  //o String firstListed
+  o String firstListed
   //o String domicile
   //o String registry
   //o String endofFinancialYear
