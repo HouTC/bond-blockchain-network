@@ -76,15 +76,8 @@ asset Holding identified by holdingId {
   o Double faceValue
 }
 
-
-
 //coupon payment process
-transaction CouponPayment {
-  --> Bond bond
-}
-
-//regulator can decline bond, if bond input is wrong
-transaction DeclineBond{
+transaction MakePayment {
   --> Bond bond
 }
 
