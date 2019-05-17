@@ -22,7 +22,7 @@ namespace org.example.mynetwork
 participant Issuer identified by issuerId {
   o String issuerId
   o String name
-  //o String firstListed
+  o String firstListed
   //o String domicile
   //o String registry
   //o String endofFinancialYear
@@ -59,13 +59,14 @@ asset Bond identified by ISIN {
   //o DateTime firstInterestPaymentDate
   o String interestPaymentFreq
   o DateTime maturityDate
-  o DateTime nextPaymentDate
-
+  
   --> Holding[] holdings
   o Double minHolding
   //o Double issuePrice
   o String type
-  o Boolean pStatus default = false
+  o DateTime nextPaymentDate
+  o Boolean matured default = false
+  // o Boolean pStatus default = false
 }
 
 asset Holding identified by holdingId {
@@ -75,16 +76,8 @@ asset Holding identified by holdingId {
   o Double faceValue
 }
 
-
-
 //coupon payment process
-transaction CouponPayment {
-  --> Issuer issuer
-  --> Bond bond
-}
-
-//regulator can decline bond, if bond input is wrong
-transaction DeclineBond{
+transaction MakePayment {
   --> Bond bond
 }
 
