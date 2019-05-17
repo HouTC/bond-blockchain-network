@@ -12,36 +12,6 @@
  * limitations under the License.
  */
 
-/**
- * Sample access control list.
- */
-
- /*
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "org.example.mynetwork.SampleParticipant"
-    operation: READ
-    resource: "org.example.mynetwork.*"
-    action: ALLOW
-}
-
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.example.mynetwork.SampleParticipant"
-    operation: CREATE
-    resource: "org.example.mynetwork.SampleTransaction"
-    action: ALLOW
-}
-
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "org.example.mynetwork.SampleParticipant"
-    operation: ALL
-    resource(r): "org.example.mynetwork.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
-    action: ALLOW
-}
-*/
 
 rule SystemACL {
   description:  "System ACL to permit all access"
@@ -128,19 +98,11 @@ rule IssuerAccessHoldings {
   action: ALLOW
 }
 
-rule EnableDeclineBondTxn {
-    description: "Enable Regulators to submit DeclineBond transactions"
-    participant: "org.example.mynetwork.Regulator"
-    operation: ALL
-    resource: "org.example.mynetwork.DeclineBond"
-    action: ALLOW
-}
-
-rule EnableCouponPaymentTxn {
-    description: "Enable Issuers to submit CouponPayment transactions"
+rule EnableMakePaymentTxn {
+    description: "Enable Issuers to submit MakePayment transactions"
     participant: "org.example.mynetwork.Issuer"
     operation: ALL
-    resource: "org.example.mynetwork.CouponPayment"
+    resource: "org.example.mynetwork.MakePayment"
     action: ALLOW
 }
 
