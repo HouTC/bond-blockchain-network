@@ -64,9 +64,9 @@ rule RegulatorViewUpdateThemselves {
 }
 
 rule RegulatorAccessAllResources {
-    description: "Allow Regulator to access all resources"
+    description: "Allow Regulator read access to all resources"
     participant: "org.example.mynetwork.Regulator"
-    operation: ALL
+    operation: READ
     resource: "org.example.mynetwork.*"
     action: ALLOW
 }
