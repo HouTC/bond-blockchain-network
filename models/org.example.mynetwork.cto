@@ -86,8 +86,18 @@ event PaymentMadeEvent {
   --> Issuer issuer
 }
 
-//payment distributed event
-event PaymentDistributedEvent {
+//coupon distributed event
+event CouponDistributedEvent {
+  --> Investor investor
+}
+
+//principal repaid event
+event PrincipalRepaidEvent {
+  --> Issuer issuer
+}
+
+//principal received event
+event PrincipalReceivedEvent {
   --> Investor investor
 }
 
