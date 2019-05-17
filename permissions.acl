@@ -169,35 +169,3 @@ rule RegulatorViewTransactionHistory {
   resource: "org.hyperledger.composer.system.HistorianRecord"
   action: ALLOW
 }
-/*
-rule RegulatorAccessBulkPayment {
-    description: "Grant Regulator full access to BulkPayment Transactions"
-    participant: "org.example.mynetwork.Regulator"
-    operation: ALL
-    resource: "org.example.mynetwork.BulkPayment"
-    action: ALLOW
-}
-
-rule RegulatorAccessDistributeCoupon {
-    description: "Grant Regulator full access to DistributeCoupon Transactions"
-    participant: "org.example.mynetwork.Regulator"
-    operation: ALL
-    resource: "org.example.mynetwork.DistributeCoupon"
-    action: ALLOW
-}
-
-rule EnableBulkPaymentTxn {
-    description: "Enable Issuer to submit BulkPayment transactions"
-    participant: "org.example.mynetwork.Issuer"
-    operation: ALL
-    resource: "org.example.mynetwork.BulkPayment"
-    action: ALLOW
-}
-
-rule EnableDistributeCouponTxn {
-    description: "Enable Issuer to submit DistributeCoupon transactions"
-    participant: "org.example.mynetwork.Issuer"
-    operation: ALL
-    resource: "org.example.mynetwork.DistributeCoupon"
-    action: ALLOW
-}*/

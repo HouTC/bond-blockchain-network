@@ -88,16 +88,6 @@ transaction DeclineBond{
   --> Bond bond
 }
 
-//bulk payment event
-event BulkPaymentMadeEvent {
-  o String issuerID
-}
-
-//distribute coupon event
-event CouponDistributedEvent {
-  o String bondISIN
-}
-
 //payment made event
 event PaymentMadeEvent {
   --> Issuer issuer
@@ -106,11 +96,6 @@ event PaymentMadeEvent {
 //payment distributed event
 event PaymentDistributedEvent {
   --> Investor investor
-}
-
-//payment incorrect amount event
-event PaymentIncorrectEvent {
-  --> Issuer issuer
 }
 
 // TRANSACTIONS FOR SETUP
