@@ -1,0 +1,70 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      
+      <!-- <img src="asset/images/logo.png" alt=""> -->
+      <!-- <img src="{{dataholder.path}}" style="width: 50%"> -->
+      <!-- <p class="network-name">This is a tagline</p> -->
+      <h2 class="navbar-brand" style="color: #9900E5; font-family: 'Source Sans Pro Bold', sans-serif;">Bond-blockchain-network</h2> 
+    
+    </div>
+    <ul class="nav navbar-nav">
+
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown">Info</a>
+        <ul class="dropdown-menu scrollable-menu">
+              <li><a [routerLink]="['/About']">About</a></li>
+              <li><a [routerLink]="['/AllTransactions']">Blockchain</a></li>              
+        </ul>
+      </li>
+
+        <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown">Assets</a>
+            <ul class="dropdown-menu scrollable-menu">
+              
+              <li><a [routerLink]="['/Bond']">Bond</a></li>
+              
+              <li><a [routerLink]="['/Holding']">Holding</a></li>
+              
+            </ul>
+        </li>
+        <li class="dropdown active">
+          <a class="dropdown-toggle" data-toggle="dropdown">Participants</a>
+          <ul class="dropdown-menu scrollable-menu">
+            
+            <li><a [routerLink]="['/Issuer']">Issuer</a></li>
+            
+            <li><a [routerLink]="['/Investor']">Investor</a></li>
+            
+            <li><a [routerLink]="['/Regulator']">Regulator</a></li>
+            
+          </ul>
+      </li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+        <ul class="dropdown-menu scrollable-menu">
+          
+          <li><a [routerLink]="['/MakePayment']">MakePayment</a></li>
+          
+          <li><a [routerLink]="['/SetupDemo']">SetupDemo</a></li>
+          
+        </ul>
+    </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
