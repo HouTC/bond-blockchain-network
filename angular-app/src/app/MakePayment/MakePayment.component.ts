@@ -97,6 +97,8 @@ export class MakePaymentComponent implements OnInit {
   }
 
   addTransaction(form: any): Promise<any> {
+    
+
     this.Transaction = {
       $class: 'org.example.mynetwork.MakePayment',
       'bond': this.bond.value,
@@ -119,6 +121,7 @@ export class MakePaymentComponent implements OnInit {
         'transactionId': null,
         'timestamp': null
       });
+      window.alert("The payment is successful");
     })
     .catch((error) => {
       if (error === 'Server error') {
