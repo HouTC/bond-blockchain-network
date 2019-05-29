@@ -114,6 +114,7 @@ export class SetupDemoComponent implements OnInit {
         'transactionId': null,
         'timestamp': null
       });
+      window.alert("Set up demo successfully!");
     })
     .catch((error) => {
       if (error === 'Server error') {

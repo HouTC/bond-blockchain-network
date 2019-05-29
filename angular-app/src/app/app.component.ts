@@ -22,6 +22,7 @@ import $ from 'jquery';
 })
 export class AppComponent implements AfterViewInit {
   title = 'app works!';
+  public url = "assets/images/ANZlog.jpg";
 
   ngAfterViewInit() {
     $('.nav a').on('click', function(){
