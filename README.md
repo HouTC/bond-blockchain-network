@@ -1,7 +1,12 @@
 # bond-blockchain-network
 
-This project is aimed to apply DLT in NZ bond market.
-__-
+This project is aimed to apply DLT in NZ bond market. The project contains two parts, the Hyperledger blockchain application and Angular app.
+
+# Hyperledger blockchain application
+
+For the blockchain application, please install Hyperledger runtime from https://hyperledger.github.io/composer/latest/installing/installing-index,
+then follow the instructions in the cheatsheet to deploy the application.
+
 # angular-app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
@@ -9,14 +14,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 
